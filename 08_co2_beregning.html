@@ -8,12 +8,23 @@
   </head>
   <body>
     <script>
-      let timer = 3;
-
+      let timer = 10;
       let co2UdledtIKgVedFlyrejse = timer * 109;
+      let respons;
+
+      if (co2UdledtIKgVedFlyrejse < 100) {
+        respons = "Tæt på Thunberg!";
+      } else if (co2UdledtIKgVedFlyrejse < 200) {
+        respons = "Ja ja, du behøver ikke at melde dig ud af Å!";
+      } else if (co2UdledtIKgVedFlyrejse < 600) {
+        respons = "Det er godt for turismen i nordeuropa!";
+      } else {
+        respons = "Nå ja vi kan jo altid kolonisere en anden planet ...";
+      }
 
       console.log(
-        `Ved 3 timers flyrejse har du udledt ${co2UdledtIKgVedFlyrejse} kg C02`
+        `Du har fløjet ${timer} timer og udledt 
+        ${co2UdledtIKgVedFlyrejse} kg C02. ${respons}`
       );
     </script>
   </body>
