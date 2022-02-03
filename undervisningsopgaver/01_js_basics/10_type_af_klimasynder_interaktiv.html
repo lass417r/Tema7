@@ -20,7 +20,7 @@
       function buttonClicked() {
         timer = document.querySelector("#timer").value;
 
-        if (isNaN(timer) || timer == "") {
+        if (isNaN(timer)) {
           console.log("Du har ikke tastet et tal ind!");
         } else {
           co2UdledtIKgVedFlyrejse = Math.round(timer * 109);

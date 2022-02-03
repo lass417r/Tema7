@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <article id="objekt">
+      <h3></h3>
+      <img src="" alt="" />
+      <p>Type:</p>
+      <p>Levested:</p>
+    </article>
+    <script>
+      window.addEventListener("load", start);
+      const destination = document.querySelector("#objekt");
+      let objekt = {
+        navn: "gris",
+        type: "pattedyr",
+        billede: "http://mabe-kea.dk/E19/pics/pig.png",
+        levested: "svinefarme",
+      };
+      console.log(start);
+      function start() {
+        destination.querySelector("h3").textContent = objekt.navn;
+        destination.querySelector("img").src = objekt.billede;
+        destination.querySelector("p:first-of-type").innerHTML += objekt.type;
+        destination.querySelector("p:nth-of-type(2)").innerHTML +=
+          objekt.levested;
+      }
+    </script>
+  </body>
+</html>
