@@ -1,0 +1,23 @@
+[
+  {
+    "mærke": "Audi",
+    "model": "A5",
+    "motor": "Benzin",
+    "km": 69000,
+    "udstyr": ["B&O", "Blinklys", "Læderrat", "Aircondition"]
+  },
+  {
+    "mærke": "VW",
+    "model": "Polo",
+    "motor": "Diesel",
+    "km": 72300,
+    "udstyr": ["Airconditionr", "Tonede ruder", "sædevarme", "gps"]
+  },
+  {
+    "mærke": "Tesla",
+    "model": "S",
+    "motor": "El",
+    "km": 1000,
+    "udstyr": ["Jydekrog", "servostyring", "soltag", "discolys", "Køleboks"]
+  }
+]

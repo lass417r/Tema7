@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      article {
+        border: 1px solid #000;
+        padding: 10px;
+      }
+      section {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+        gap: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <section></section>
+    <template>
+      <article>
+        <img src="" alt="" />
+        <h2></h2>
+        <h3></h3>
+        <p></p>
+        <p></p>
+        <p></p>
+      </article>
+    </template>
+
+    <script>
+      window.addEventListener("DOMContentLoaded", start);
+
+      function start() {
+        const loopView = [
+          {
+            url: "https://odense-film-festival.s3.eu-central-1.amazonaws.com/media/W6dOqabNhHKBPXxxKKEZRA84-360.jpg",
+            title: "A Calling",
+            instruktør: "Christian Bengtson",
+            land: "Danmark",
+            varighed: "20 min",
+            produktionsår: "2019",
+          },
+          {
+            url: "https://odense-film-festival.s3.eu-central-1.amazonaws.com/media/Q8K1pZrOs03Q0IrDkBwGVu5r-360.jpg",
+            title: "A Hole In My Heart",
+            instruktør: "Mees Peijnenburg",
+            land: "Holland",
+            varighed: "9 min",
+            produktionsår: "2015",
+          },
+          {
+            url: "https://odense-film-festival.s3.eu-central-1.amazonaws.com/media/hUd4SdGQ8I23ovxWnGtBz4Ck-360.jpg",
+            title: "A Place In The Sun - 110 years after the genocide",
+            instruktør: "Christian Zipfel",
+            land: "Tyskland",
+            varighed: "20 min",
+            produktionsår: "2018",
+          },
+          {
+            url: "https://odense-film-festival.s3.eu-central-1.amazonaws.com/media/Zdt2ODEqSVOkNe8nUaSSu8kd-360.jpg",
+            title: "A Tower of Two",
+            instruktør: "Jacob Krzysztof Glogowski",
+            land: "Danmark",
+            varighed: "21 min",
+            produktionsår: "2019",
+          },
+          {
+            url: "https://odense-film-festival.s3.eu-central-1.amazonaws.com/media/HRZBn8KLPmvVNvoJ4e8CzUVU-360.jpg",
+            title: "A Woman Without Children",
+            instruktør: "Cecilie Kronborg Thomsen",
+            land: "Danmark",
+            varighed: "20 min",
+            produktionsår: "2021",
+          },
+        ];
+        console.log(loopView);
+
+        // const article1 = document.querySelector("article");
+
+        let container = document.querySelector("section");
+        let temp = document.querySelector("template");
+
+        loopView.forEach((enFilm) => {
+          let klon = temp.cloneNode(true).content;
+
+          klon.querySelector("img").src = enFilm.url;
+          klon.querySelector("h2").textContent = enFilm.title;
+          klon.querySelector("h3").textContent = enFilm.instruktør;
+          klon.querySelector("p").textContent = enFilm.land;
+          klon.querySelector("p").textContent = enFilm.varighed;
+          klon.querySelector("p").textContent = enFilm.produktionsår;
+          container.appendChild(klon);
+        });
+      }
+    </script>
+  </body>
+</html>

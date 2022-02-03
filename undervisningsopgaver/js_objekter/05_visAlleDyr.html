@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section id="liste"></section>
+    <script>
+      document.addEventListener("DOMContentLoaded", start);
+      console.log(start);
+      function start() {}
+
+      let objekt = [
+        {
+          navn: "gris",
+          type: "pattedyr",
+          billede: "http://mabe-kea.dk/E19/pics/pig.png",
+          levested: "svinefarme",
+        },
+        {
+          navn: "frø",
+          type: "amfibie",
+          billede: "http://mabe-kea.dk/E19/pics/frog.png",
+          levested: "sø",
+        },
+        {
+          navn: "ræv",
+          type: "pattedyr",
+          billede: "http://mabe-kea.dk/E19/pics/fox.png",
+          levested: "skov",
+        },
+        {
+          navn: "sild",
+          type: "fisk",
+          billede: "http://mabe-kea.dk/E19/pics/sild.png",
+          levested: "havet",
+        },
+        {
+          navn: "krokodille",
+          type: "krybdyr",
+          billede: "http://mabe-kea.dk/E19/pics/kroko.png",
+          levested: "zoo",
+        },
+      ];
+
+      const liste = document.querySelector("#liste");
+
+      //   destination.querySelector("h3").textContent = objekt.navn;
+      //   destination.querySelector("p").textContent = objekt.levested;
+      //   destination.querySelector("img").src = objekt.billede;
+
+      objekt.forEach((dyr) => {
+        liste.innerHTML += `<p>${dyr.navn}, ${dyr.type} fra ${dyr.levested}</p>`;
+      });
+
+      console.log(objekt);
+    </script>
+  </body>
+</html>
