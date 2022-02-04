@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      main {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 10px;
+      }
+      article {
+        display: block;
+        border: 1px solid #000;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section id="liste"></section>
+      <template>
+        <article>
+          <h3></h3>
+          <img src="" alt="" />
+          <p class="art"></p>
+          <p class="sted"></p>
+        </article>
+      </template>
+    </main>
+
+    <script>
+      "use strict";
+      document.addEventListener("DOMContentLoaded", start);
+      console.log(start);
+      function start() {}
+
+      const url = "https://persongalleri-5d3e.restdb.io/rest/persongalleri";
+      const key = "600ec2fb1346a1524ff12de4";
+
+      const options = {
+        headers: {
+          "x-apikey": "600ec2fb1346a1524ff12de4",
+        },
+      };
+
+      async function hentdata() {
+        const resultat = await fetch(url, options);
+        const json = await resultat.json();
+        vis(json);
+      }
+
+      function vis(json) {
+        console.log(json);
+        const beholder = document.querySelector("main");
+        const skabelon = document.querySelector("template");
+      }
+
+      json.forEach((etDyr) => {
+        let klon = skabelon.cloneNode(true).content;
+        klon.querySelector("h3").textContent = etDyr.navn;
+        klon.querySelector(".art").textContent = `Art: ${etDyr.pris}`;
+        klon.querySelector(".sted").textContent = `Levested: ${etDyr.levested}`;
+        klon.querySelector("img").src = etDyr.billede;
+        beholder.appendChild(klon);
+      });
+
+      hentdata();
+
+      // let container = document.querySelector("section");
+      // let temp = document.querySelector("template");
+
+      // //løb igennem array "dyr"
+    </script>
+  </body>
+</html>
