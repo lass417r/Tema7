@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+      section {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 10px;
+      }
+      article {
+        display: block;
+        border: 1px solid #000;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="liste"></section>
+      <template>
+        <article>
+          <h3 class="navn"></h3>
+          <img src="" alt="" class="billede" />
+          <p class="kort"></p>
+          <p class="pris"></p>
+        </article>
+      </template>
+    </main>
+
+    <script>
+      const url = "https://babushka-dd8a.restdb.io/rest/menu";
+      const key = "600ec2fb1346a1524ff12de4";
+      let retter;
+      let filter;
+
+      const options = {
+        headers: {
+          "x-apikey": "600ec2fb1346a1524ff12de4",
+        },
+      };
+
+      const container = document.querySelector("section");
+      const temp = document.querySelector("template");
+
+      async function hentdata() {
+        const result = await fetch(url, options);
+        const json = await result.json();
+        vis(json);
+      }
+
+      function vis(json) {
+        console.log(json);
+        json.forEach((ret) => {
+          const klon = temp.cloneNode(true).content;
+          klon.querySelector(".billede").src = "faces/" + ret.navn;
+          klon.querySelector("h3").textContent = ret.navn;
+          klon.querySelector(".kort").textContent =
+            "Beskrivelse: " + ret.kortbeskrivelse;
+          klon.querySelector(".pris").textContent = "Pris: " + ret.pris;
+          container.appendChild(klon);
+        });
+      }
+
+      hentdata();
+    </script>
+  </body>
+</html>

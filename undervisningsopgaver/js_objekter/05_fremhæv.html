@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      section {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 10px;
+      }
+      article {
+        border: 3px solid green;
+        padding: 10px;
+        border-radius: 5px;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      h1,
+      .kategori {
+        display: flex;
+        justify-content: center;
+      }
+
+      nav {
+        display: flex;
+        justify-content: center;
+        gap: 0.2rem;
+        padding: 0.2rem;
+        margin: 0.2rem;
+      }
+
+      .valgt {
+        background-color: lightgreen;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h2 class="kategori">Alle</h2>
+        <nav>
+          <button data-troende="alle" class="valgt">Alle</button>
+          <button data-troende="ja" class="">Troende</button>
+          <button data-troende="nej" class="">Ikke troende</button>
+          <button data-troende="tvivler" class="">Tvivler</button>
+        </nav>
+      </header>
+      <section class="liste"></section>
+    </main>
+    <template>
+      <article>
+        <h2 class="navn"></h2>
+        <img src="" alt="" class="billede" />
+        <p class="fødselsdag"></p>
+        <p class="hobby"></p>
+      </article>
+    </template>
+
+    <script>
+      //Kontroller om DOM´en er loaded
+      window.addEventListener("DOMContentLoaded", start);
+
+      function start() {
+        const url = "https://persongalleri-5d3e.restdb.io/rest/persongalleri";
+        const key = "600fe9211346a1524ff12e31";
+        const options = {
+          headers: {
+            "x-apikey": key,
+          },
+        };
+
+        let personer;
+        let filter = "alle";
+
+        const filterKnapper = document.querySelectorAll("nav button");
+        filterKnapper.forEach((knap) =>
+          knap.addEventListener("click", filtrerPersoner)
+        );
+        loadJSON();
+
+        function filtrerPersoner() {
+          filter = this.dataset.troende;
+          document.querySelector(".valgt").classList.remove("valgt");
+          this.classList.add("valgt");
+
+          vis();
+
+          const kategori = document.querySelector("header .kategori");
+          console.log(this);
+          kategori.textContent = this.textContent;
+        }
+
+        async function loadJSON() {
+          const JSONData = await fetch(url, options);
+          const jsonFil = await JSONData.json();
+          personer = jsonFil;
+          console.log(jsonFil);
+          vis();
+        }
+
+        function vis() {
+          const container = document.querySelector("section");
+          const temp = document.querySelector("template");
+          container.textContent = "";
+
+          //løb igennem array "personer"
+          personer.forEach((person) => {
+            if (filter == person.troende || filter == "alle") {
+              let klon = temp.cloneNode(true).content;
+              klon.querySelector(".navn").textContent =
+                person.fornavn + " " + person.efternavn;
+              klon.querySelector(".billede").src = "faces/" + person.billede;
+              klon.querySelector(
+                ".fødselsdag"
+              ).textContent = `Født: ${person.fødselsdag}`;
+              klon.querySelector(
+                ".hobby"
+              ).textContent = `Hobby: ${person.hobby}`;
+              container.appendChild(klon);
+            }
+          });
+        }
+      }
+    </script>
+  </body>
+</html>

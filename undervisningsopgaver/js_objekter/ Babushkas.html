@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+      section {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 10px;
+      }
+      article {
+        display: block;
+        border: 1px solid #000;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="liste"></section>
+      <template>
+        <article>
+          <h3 class="navn"></h3>
+          <img src="" alt="" class="billede" />
+          <p class="føds"></p>
+          <p class="email"></p>
+        </article>
+      </template>
+    </main>
+
+    <script>
+      const url = "https://lassegodtkjaer-1dd6.restdb.io/rest/medlemmer";
+      const key = "61fcf7ea3f215f310a37be6a";
+
+      const options = {
+        headers: {
+          "x-apikey": "61fcf7ea3f215f310a37be6a",
+        },
+      };
+
+      const container = document.querySelector("section");
+      const temp = document.querySelector("template");
+
+      async function hentdata() {
+        const result = await fetch(url, options);
+        const json = await result.json();
+        vis(json);
+      }
+
+      function vis(json) {
+        console.log(json);
+        json.forEach((person) => {
+          const klon = temp.cloneNode(true).content;
+          klon.querySelector(
+            "h3"
+          ).textContent = `${person.fornavn} ${person.efternavn}`;
+          klon.querySelector(".billede").src = "faces/" + person.billede;
+          klon.querySelector(".føds").textContent =
+            "Username: " + person.Billeder;
+          klon.querySelector(".email").textContent = "Email " + person.email;
+          container.appendChild(klon);
+        });
+      }
+
+      hentdata();
+    </script>
+  </body>
+</html>
