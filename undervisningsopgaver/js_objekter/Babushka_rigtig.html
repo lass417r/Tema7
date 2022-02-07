@@ -25,25 +25,25 @@
   <body>
     <main>
       <section class="liste"></section>
-      <template>
-        <article>
-          <h3 class="navn"></h3>
-          <img src="" alt="" class="billede" />
-          <p class="kort"></p>
-          <p class="pris"></p>
-        </article>
-      </template>
     </main>
+    <template>
+      <article>
+        <h3 class="navn"></h3>
+        <img src="" alt="" class="billede" />
+        <p class="kort"></p>
+        <p class="pris"></p>
+      </article>
+    </template>
 
     <script>
       const url = "https://babushka-dd8a.restdb.io/rest/menu";
       const key = "600ec2fb1346a1524ff12de4";
       let retter;
-      let filter;
+      let filter = "alle";
 
       const options = {
         headers: {
-          "x-apikey": "600ec2fb1346a1524ff12de4",
+          "x-apikey": "key",
         },
       };
 
@@ -60,7 +60,7 @@
         console.log(json);
         json.forEach((ret) => {
           const klon = temp.cloneNode(true).content;
-          klon.querySelector(".billede").src = "faces/" + ret.navn;
+          klon.querySelector(".billede").src = `faces/${ret.navn}-mb.jpg`;
           klon.querySelector("h3").textContent = ret.navn;
           klon.querySelector(".kort").textContent =
             "Beskrivelse: " + ret.kortbeskrivelse;
