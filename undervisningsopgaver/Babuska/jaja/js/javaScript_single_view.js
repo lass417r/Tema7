@@ -11,16 +11,13 @@ const options = {
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get("id");
 
-let retter;
 let ret;
-let number = 0;
 
 document.addEventListener("DOMContentLoaded", loadJSON);
 
 async function loadJSON() {
   const JSONData = await fetch(url + id, options);
   ret = await JSONData.json();
-  // console.log(ret);
   visMad(ret);
   loadJSONRetter();
 }

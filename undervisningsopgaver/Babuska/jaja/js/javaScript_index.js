@@ -1,6 +1,5 @@
 "use strict";
 
-//Kontroller om DOM´en er loaded
 window.addEventListener("DOMContentLoaded", start);
 
 const url = "https://babushka-dd8a.restdb.io/rest/menu";
@@ -31,7 +30,7 @@ function filtrerKategori() {
 
   const txtKategori = document.querySelector("header .txt_kategori");
   console.log(this);
-  txtKategori.textContent = "Flitrer: " + this.textContent;
+  txtKategori.textContent = "Filter: " + this.textContent;
 }
 
 async function loadJSON() {
