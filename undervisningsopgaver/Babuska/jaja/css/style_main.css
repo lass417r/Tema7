@@ -6,14 +6,12 @@
 }
 
 body {
-  background-color: wheat;
+  background-color: white;
 }
 
 main {
   display: grid;
   grid-template-columns: 1fr minmax(0, 800px) 1fr;
-  overflow-wrap: break-word;
-  hyphens: auto;
   padding-left: 1rem;
   padding-right: 1rem;
 }
@@ -26,15 +24,13 @@ section {
 }
 
 article {
-  outline: 5px solid orange;
-  border: 1px solid orange;
   padding: 10px;
   border-radius: 5px;
+  border-radius: 0px;
 }
 
 article img {
   border-radius: 5px;
-  outline: 3px solid papayawhip;
 }
 
 img {
@@ -45,8 +41,6 @@ img {
 /* Menu start */
 
 header #menu {
-  /* display: flex; */
-  /* justify-content: center; */
   margin: 0rem 1rem 1rem 1rem;
   overflow-x: auto;
   flex-direction: column;
@@ -61,7 +55,7 @@ header {
   cursor: pointer;
   display: flex;
   justify-content: end;
-  margin-right: 3rem;
+  margin: 3rem;
 }
 
 .hidden {
@@ -81,23 +75,22 @@ footer {
   margin-top: 2rem;
   padding-bottom: 2rem;
   border-top: 0.125rem solid #000;
-  background-color: orange;
+  background-color: rgb(50, 79, 52);
 }
 
 footer p {
   padding-top: 1rem;
-  color: orangered;
+  color: rgb(255, 0, 0);
   font-weight: bold;
 }
 
 button {
-  margin: 0.2rem;
-  padding: 0.2rem;
+  margin: 0.3rem;
+  padding: 0.5rem;
   border-radius: 5px;
   transition: 250ms ease-in;
-  outline: 0.125rem solid #000;
   border: none;
-  border: 0.125rem solid #000;
+  border-radius: 0px;
 }
 
 button:hover {
@@ -106,17 +99,18 @@ button:hover {
 }
 
 h1 {
-  color: orangered;
+  color: rgb(255, 0, 0);
   text-align: center;
-  background-color: orange;
+  background-color: rgb(50, 79, 52);
   padding: 3rem;
   font-size: 2.3rem;
   border-bottom: 0.125rem solid #000;
   text-transform: uppercase;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
 h1:hover {
-  background-color: rgb(255, 208, 0);
+  background-color: rgb(0, 0, 0);
   /* color: rgb(255, 208, 0); */
 }
 
@@ -127,21 +121,21 @@ h2 {
 }
 
 .valgt {
-  background-color: orangered;
+  background-color: rgb(179, 179, 179);
 }
 
 .menu:nth-child(odd) {
-  background-color: papayawhip;
+  background-color: rgb(255, 255, 255);
 }
 
 .menu:nth-child(even) {
-  background-color: beige;
+  background-color: rgb(237, 237, 237);
 }
 
 .menu {
   transition: 250ms ease-in;
   padding: 1rem;
-  outline: 0.125rem solid orange;
+  outline: 0.125rem solid rgb(118, 118, 118);
   cursor: pointer;
 }
 
@@ -174,7 +168,6 @@ article .klik_info {
 #popup img {
   max-width: 55%;
   border-radius: 5px;
-  outline: 3px solid papayawhip;
   margin-bottom: 0.5rem;
 }
 
@@ -189,15 +182,7 @@ article .klik_info {
   left: 11vw;
 }
 
-@media (min-width: 542px) {
-  /* header nav {
-          display: flex;
-          justify-content: center;
-          gap: 1rem;
-          margin: 0.8rem 0rem;
-          flex-direction: row;
-        } */
-
+@media (min-width: 600px) {
   #menuknap {
     display: none;
   }
